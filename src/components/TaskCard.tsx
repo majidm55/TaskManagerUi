@@ -79,9 +79,9 @@ const TaskCard = ({
   const renderActionButtons = (currentStatus: string) => {
     return Object.entries(buttonConfig)
       .filter(([status]) => status !== currentStatus)
-      .map(([status, config]) => (
+      .map(([statusKey, config]) => (
         <Tooltip
-          key={config.label}
+          key={statusKey}
           title={config.label}
           slotProps={{
             popper: {
@@ -92,7 +92,6 @@ const TaskCard = ({
           <IconButton
             key={config.status}
             onClick={() => {
-              console.log("status:", status);
               onStatusChange(config.status, item.id);
             }}
             sx={{
@@ -148,7 +147,6 @@ const TaskCard = ({
           <Tooltip
             key={"delete-item"}
             title={"Delete Task"}
-            // slots={{ popper: Popper }}
             slotProps={{
               popper: {
                 disablePortal: true,

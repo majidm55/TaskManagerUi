@@ -16,7 +16,8 @@ import PendingIcon from "@mui/icons-material/Pending";
 import DonutLargeIcon from "@mui/icons-material/DonutLarge";
 import TaskAltIcon from "@mui/icons-material/TaskAlt";
 import ArchiveIcon from "@mui/icons-material/Archive";
-import { queryClient } from "@/router";
+// import { queryClient } from "@/router";
+import { useQueryClient } from "@tanstack/react-query";
 import deleteTask from "@/api/tasks/deleteTask";
 import "../App.css";
 import { useNavigate } from "@tanstack/react-router";
@@ -70,6 +71,7 @@ export default function TaskBoard({ page, pageSize }: TasksComponentProps) {
   const { data, isLoading, error, isFetching } = useQuery(
     tasksQueryOptions(page, pageSize)
   );
+  const queryClient = useQueryClient();
   const navigate = useNavigate();
 
   const taskStatusDeleteMutation = useMutation({
