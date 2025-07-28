@@ -9,17 +9,19 @@ import {
 } from "@mui/material";
 import TaskCard from "./TaskCard";
 import type { TaskItem } from "../types";
-import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { useMutation, useQuery } from "@tanstack/react-query";
 import updateTask from "../api/tasks/updateTask";
 import { tasksQueryOptions } from "@/queries/tasksQueryOptions";
 import PendingIcon from "@mui/icons-material/Pending";
 import DonutLargeIcon from "@mui/icons-material/DonutLarge";
 import TaskAltIcon from "@mui/icons-material/TaskAlt";
 import ArchiveIcon from "@mui/icons-material/Archive";
+import { queryClient } from "@/router";
 import deleteTask from "@/api/tasks/deleteTask";
 import "../App.css";
 import { useNavigate } from "@tanstack/react-router";
 import SimplePagination from "./Pagination";
+import { calculatePaginationData } from "@/utils/paginationUtil";
 
 interface TasksComponentProps {
   page: number;
@@ -69,7 +71,6 @@ export default function TaskBoard({ page, pageSize }: TasksComponentProps) {
   const { data, isLoading, error, isFetching } = useQuery(
     tasksQueryOptions(page, pageSize)
   );
-  const queryClient = useQueryClient();
   const navigate = useNavigate();
 
   const taskStatusDeleteMutation = useMutation({
@@ -121,15 +122,14 @@ export default function TaskBoard({ page, pageSize }: TasksComponentProps) {
   };
   const handlePageChange = (newPage: number) => {
     navigate({
-      to: "/", // Replace with your actual route path
+      to: "/tasks",
       search: { page: newPage, pageSize },
     });
   };
 
-  // Handle page size change - resets to page 1
   const handlePageSizeChange = (newPageSize: number) => {
     navigate({
-      to: "/", // Replace with your actual route path
+      to: "/tasks",
       search: { page: 1, pageSize: newPageSize },
     });
   };
@@ -155,10 +155,8 @@ export default function TaskBoard({ page, pageSize }: TasksComponentProps) {
     return null;
   }
 
-  const paginationData = data.pending || {
-    totalPages: 1,
-    totalCount: 0,
-  };
+  const paginationData = calculatePaginationData(data);
+
   return (
     <div className="testing">
       {isFetching && (

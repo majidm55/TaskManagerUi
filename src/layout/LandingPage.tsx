@@ -7,7 +7,15 @@ import { useNavigate } from "@tanstack/react-router";
 export default function LandingPage() {
   const navigate = useNavigate();
   return (
-    <Box sx={{ minHeight: "100vh", bgcolor: "#f7f9fc", color: "#333" }}>
+    <Box
+      sx={{
+        display: "flex",
+        flexDirection: "column",
+        minHeight: "90vh",
+        bgcolor: "#f7f9fc",
+        color: "#333",
+      }}
+    >
       <Box
         sx={{
           py: 10,
@@ -37,7 +45,7 @@ export default function LandingPage() {
         </Container>
       </Box>
 
-      <Container maxWidth="lg" sx={{ py: 8 }}>
+      <Container maxWidth="lg" sx={{ py: 8, flexGrow: 1 }}>
         <Typography variant="h4" fontWeight="bold" align="center" gutterBottom>
           Features
         </Typography>

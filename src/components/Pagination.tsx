@@ -35,10 +35,6 @@ export default function SimplePagination({
     onPageSizeChange(Number(event.target.value));
   };
 
-  if (totalPages <= 1) {
-    return null;
-  }
-
   return (
     <Stack spacing={2} alignItems="center" sx={{ mt: 5 }}>
       <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
