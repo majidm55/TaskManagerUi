@@ -1,103 +1,59 @@
-Task Manager Application
+## **Task Manager Application**
 
-## **Getting Started with Vite**
+This project was bootstrapped with Vite, using the React TypeScript template and uses Material UI, TanStack Query, TanStack Router, and Zustand state management.
 
-This project was bootstrapped with Vite, using the React TypeScript template with Material UI, TanStack Query, and Zustand state management.
+## **Prerequisites**
+
+- node v22
+- npm v10
 
 ## **Available Scripts**
 
 In the project directory, you can run:
+`npm install`
+
+Installs all the packages
 
 `npm run dev`
 
 Runs the app in the development mode. Open http://localhost:5173 to view it in the browser (port may vary based on availability).
 
-The page will reload if you make edits. You will also see any lint errors in the console.
-
-`npm run build`
-
-Builds the app for production to the `dist` folder.
-
-`npm run preview`
-
-Serves the production build locally for testing.
-
-`npm run lint`
-
-Runs ESLint to check for code quality issues.
+The page will reload if you make edits.
 
 ## **Features**
 
 - React components with Zustand state management
 - Asynchronous operations handled using TanStack Query
-- Responsive UI design using Material UI components and utilities
-- Task CRUD operations with ASP.NET Core backend
-- SQLite database for data persistence
-- Multi-status task management (Pending, In Progress, Completed, Cancelled)
-- Task pagination for better performance
+- UI design using Material UI components and utilities
+- Multi-status task management (Pending, In Progress, Completed, Archived)
+- Task pagination for better performance and handling larger data
 - Analytics dashboard with pie charts using Recharts
-- Type-safe routing with TanStack Router
-
-## **Prerequisites**
-
-- node v18+
-- npm v8+
-- .NET Core SDK (for backend)
+- Routing with TanStack Router
+- Type safety using Typescript
 
 ## **Installation**
 
 1. Navigate to project directory
 2. Install dependencies: `npm install`
-3. Ensure ASP.NET Core backend is running with SQLite database
+3. Ensure ASP.NET Core backend is running (port specified in project http://localhost:5157/api)
 
 ## **Usage**
 
 1. Run the development server: `npm run dev`
 2. Open your web browser and visit the URL shown in terminal (typically `http://localhost:5173`) to view the application.
-3. Backend API should be running to enable full functionality
+3. Backend API should be running to run the main app
 
 ## **Project Structure**
 
 - `src/`: Contains the application source code.
+  - `api/`: Contains API service functions and HTTP client configuration.
   - `components/`: Contains reusable React components for tasks, forms, and analytics.
-  - `stores/`: Contains Zustand state management stores.
-  - `types/`: Contains TypeScript type definitions and Zod schemas.
+  - `layout/`: Contains large layout componenets for individual pages
+  - `types/`: Contains TypeScript type definitions for globally used types.
   - `routes/`: Contains TanStack Router route definitions and page components.
-  - `utils/`: Contains utility functions and API helpers.
-  - `App.tsx`: Entry point of the application with router configuration.
-  - `main.tsx`: Renders the React app into the root HTML element.
-
-## **Configuration**
-
-- **Zustand configuration:**
-  - Global state stores for task management and UI state
-  - Persist middleware for local storage integration
-  - Type-safe state management with TypeScript
-
-- **TanStack Query configuration:**
-  - API call management with caching and background updates
-  - Optimistic updates for better user experience
-  - Error handling and retry logic
-
-- **Material UI configuration:**
-  - The project uses Material UI components and theming system
-  - Custom theme configuration with consistent design tokens
-  - Responsive breakpoints and component customization
-
-- **TanStack Router configuration:**
-  - Type-safe routing with automatic route generation
-  - Nested routes and layout components
-  - Route-based code splitting for performance
-
-## **Backend Integration**
-
-- **ASP.NET Core Web API** endpoints:
-  - `GET /api/tasks` - Fetch paginated tasks
-  - `POST /api/tasks` - Create new task
-  - `PUT /api/tasks/{id}` - Update task status/details
-  - `DELETE /api/tasks/{id}` - Delete task
-
-- **SQLite Database** for persistent storage of tasks and user data
+  - `utils/`: Contains utility functions.
+  - `queries`/: Contains query for fetching task data
+  - `main.tsx`: Renders the React app into the root HTML element and entry point of the application with router and query configuration.
 
 ## **Extra Features**
 
@@ -108,29 +64,16 @@ Runs ESLint to check for code quality issues.
 
 - **Analytics Dashboard:**
   - Visual pie chart showing task distribution by status
-  - Real-time updates as tasks change
-  - Interactive chart components with hover effects
-
-- **Modern Development Experience:**
-  - Full TypeScript implementation with strict type checking
-  - Zod schemas for runtime type validation
-  - Hot module replacement with Vite for fast development
-
-- **User Experience Enhancements:**
-  - Responsive design for mobile and desktop
-  - Loading states and error handling
-  - Optimistic UI updates for better perceived performance
 
 ## **Trade-offs**
 
 - **State Management Choice:**
   - Chose Zustand over Redux for simpler API and less boilerplate
-  - Trade-off: Less ecosystem tooling compared to Redux DevTools
+  - Trade-off: Less ecosystem tooling compared to Redux DevTools and less control over side effects
 
 - **Query Management:**
   - Used TanStack Query instead of built-in fetch for better caching
-  - Trade-off: Additional dependency but significant DX improvements
-
+  - Trade-off: Additional dependency and setup
 - **Component Library:**
   - Material UI chosen for rapid development and consistent design
   - Trade-off: Larger bundle size but faster development time
@@ -141,8 +84,4 @@ Runs ESLint to check for code quality issues.
 
 - **Backend Integration:**
   - Direct API calls without authentication layer
-  - Trade-off: Simpler implementation but not production-ready for multi-user scenarios
-
-- **Database Choice:**
-  - SQLite for simplicity in development
-  - Trade-off: Easy setup but not suitable for production scale or concurrent users
+  - Trade-off: Simpler implementation but not production-ready for multi-user scenarios and access control
