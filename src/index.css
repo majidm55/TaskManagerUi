@@ -76,7 +76,6 @@ button:focus-visible {
 .tasks-layout-container {
   display: flex;
   flex-direction: column;
-  align-items: center;
 }
 
 .top-nav {

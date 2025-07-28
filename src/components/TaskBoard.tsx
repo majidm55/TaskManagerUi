@@ -54,7 +54,6 @@ const TaskList = styled("div")(() => ({
 }));
 
 const TaskColumnStyles = styled("div")(() => ({
-  margin: "8px",
   display: "flex",
   width: "100%",
   height: "calc(100vh - 300px)",
@@ -158,7 +157,7 @@ export default function TaskBoard({ page, pageSize }: TasksComponentProps) {
   const paginationData = calculatePaginationData(data);
 
   return (
-    <div className="testing">
+    <div style={{ margin: "0 auto" }}>
       {isFetching && (
         <Box sx={{ position: "fixed", top: 16, right: 16, zIndex: 1000 }}>
           <CircularProgress size={24} />
