@@ -14,18 +14,6 @@ Runs the app in the development mode. Open http://localhost:5173 to view it in t
 
 The page will reload if you make edits. You will also see any lint errors in the console.
 
-`npm run build`
-
-Builds the app for production to the `dist` folder.
-
-`npm run preview`
-
-Serves the production build locally for testing.
-
-`npm run lint`
-
-Runs ESLint to check for code quality issues.
-
 ## **Features**
 
 - React components with Zustand state management
