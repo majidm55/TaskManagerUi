@@ -180,7 +180,9 @@ export default function TaskBoard({ page, pageSize }: TasksComponentProps) {
                     key={index}
                   >
                     {renderStatusAvatar(lane.value)}
-                    <Title>{lane.title}</Title>
+                    <Title>
+                      {lane.title}({data[lane.value]?.data.length || 0})
+                    </Title>
                   </Grid>
                 </Box>
                 <Divider />
