@@ -1,12 +1,12 @@
 import { createFileRoute } from "@tanstack/react-router";
-import App from "../App";
+import NavigationContainer from "../layout/NavigationContainer";
+import LandingPage from "@/layout/LandingPage";
 
 const Index = () => {
   return (
-    <div className="p-2">
-      <h3 className="font-primary">Welcome Home!LIOBREEEE</h3>
-      <App />
-    </div>
+    <NavigationContainer>
+      <LandingPage />
+    </NavigationContainer>
   );
 };
 export const Route = createFileRoute("/")({
