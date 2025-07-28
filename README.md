@@ -78,6 +78,10 @@ The page will reload if you make edits.
   - Material UI chosen for rapid development and consistent design
   - Trade-off: Larger bundle size but faster development time
 
+- **Styles:**
+  - Material UI styled components wihtout a central theme
+  - Trade-off: Visually basic elements and styles but faster development time
+
 - **Testing:**
   - No unit tests included per assignment requirements
   - Trade-off: Faster initial development but less confidence in refactoring
